@@ -1,0 +1,4 @@
+---
+# tasks file for docker
+- include_tasks: setup-debian.yml
+  when: ansible_os_family == 'Debian'

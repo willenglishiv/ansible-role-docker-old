@@ -1,0 +1,22 @@
+galaxy_info:
+  author: Will English IV
+  description: Docker for various unix* systems.
+  license: license (BSD, MIT)
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+        - cosmic
+        - disco
+    - name: Debian
+        - stretch
+        - buster
+  galaxy_tags:
+    - web
+    - system
+    - containers
+    - docker
+    - orchestration
+    - server

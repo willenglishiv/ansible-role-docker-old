@@ -1,0 +1,57 @@
+---
+# Reading instructions from https://docs.docker.com/install/linux/docker-ce/ubuntu/
+- name: remove old docker versions
+  package: 
+    name:
+      - docker 
+      - docker-engine 
+      - docker.io 
+      - containerd 
+      - runc
+    state: absent
+
+- name: install dependencies
+  package:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+    state: present
+    update_cache: yes
+
+- name: install dependencies specific to Ubuntu
+  package:
+    name: gnupg-agent
+    state: present
+    when: ansible_distribution == 'Ubuntu'
+
+- name: install dependencies specific to Debian
+  package:
+    name: gnupg2
+    state: present
+    when: ansible_distribution == 'Debian'
+
+- name: install docker apt key
+  apt_key:
+    id: {{ docker_apt_key }}
+    url: {{ docker_apt_key_url }}
+    state: present
+
+- name: add docker repository
+  apt_repository:
+    repo: {{ docker_apt_repository }}
+    state: present
+
+- name: install docker
+  package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+- name: restart docker service
+  systemd:
+    name: docker
+    state: restarted
+    daemon_reload: yes

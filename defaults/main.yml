@@ -1,0 +1,11 @@
+---
+# defaults file for docker
+docker_apt_release_channel: stable
+docker_apt_ignore_key_error: true
+# Docker Engine - Community is supported on x86_64 (or amd64), armhf, arm64, s390x (IBM Z), and ppc64le (IBM Power) architectures.
+docker_apt_arch: amd64
+docker_apt_distro_url: "https://download.docker.com/linux/{{ ansible_distribution|lower }}"
+docker_apt_key_url: "{{docker_apt_distro_url}}/gpg"
+docker_apt_repository: "deb [arch={{ docker_apt_arch }}] {{docker_apt_distro_url}} {{ ansible_distribution_release }} {{ docker_apt_release_channel }}"
+
+docker_apt_key: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
