@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: willenglishiv.docker
   author: Will English IV
   description: Docker for various unix* systems.
   license: license (BSD, MIT)
