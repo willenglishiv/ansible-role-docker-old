@@ -24,13 +24,13 @@
   package:
     name: gnupg-agent
     state: present
-    when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu'
 
 - name: install dependencies specific to Debian
   package:
     name: gnupg2
     state: present
-    when: ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian'
 
 - name: install docker apt key
   apt_key:
